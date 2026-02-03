@@ -102,7 +102,7 @@
 #define __LDBL_HAS_QUIET_NAN__ 1
 #define __FLT64_MANT_DIG__ 53
 #define _REENTRANT 1
-#define __GNUC__ 7
+#define __GNUC__ 8
 #define _cdecl __attribute__((__cdecl__))
 #define __GXX_RTTI 1
 #define __MMX__ 1
@@ -119,7 +119,6 @@
 #define __INT_FAST32_MAX__ 0x7fffffff
 #define __WINNT 1
 #define __DBL_HAS_INFINITY__ 1
-#define __INT64_MAX__ 0x7fffffffffffffffLL
 #define __WINNT__ 1
 #define __DEC32_MIN_EXP__ (-94)
 #define __INTPTR_WIDTH__ 64
@@ -146,7 +145,7 @@
 #define __tune_core2__ 1
 #define __ATOMIC_HLE_ACQUIRE 65536
 #define __FLT32_HAS_QUIET_NAN__ 1
-#define __GNUG__ 7
+#define __GNUG__ 8
 #define __LONG_LONG_MAX__ 0x7fffffffffffffffLL
 #define __SIZEOF_SIZE_T__ 8
 #define __cpp_rvalue_reference 200610
@@ -158,7 +157,7 @@
 #define __FLT32_MAX_EXP__ 128
 #define __cpp_hex_float 201603
 #define __GCC_HAVE_DWARF2_CFI_ASM 1
-#define __GXX_ABI_VERSION 1011
+#define __GXX_ABI_VERSION 1012
 #define __FLT128_HAS_INFINITY__ 1
 #define __FLT_MIN_EXP__ (-125)
 #define __cpp_lambdas 200907
@@ -181,7 +180,7 @@
 #define __NO_INLINE__ 1
 #define __FLT_MANT_DIG__ 24
 #define __LDBL_DECIMAL_DIG__ 21
-#define __VERSION__ "7.3.0"
+#define __VERSION__ "8.1.0"
 #define __UINT64_C(c) c ## ULL
 #define __cpp_unicode_characters 200704
 #define __GCC_ATOMIC_INT_LOCK_FREE 2
@@ -240,6 +239,7 @@
 #define __SEG_FS 1
 #define __INT_LEAST16_MAX__ 0x7fff
 #define __DEC64_MANT_DIG__ 16
+#define __INT64_MAX__ 0x7fffffffffffffffLL
 #define __UINT_LEAST32_MAX__ 0xffffffffU
 #define __SEG_GS 1
 #define __FLT32_DENORM_MIN__ 1.40129846432481707092372958328991613e-45F32
@@ -354,7 +354,7 @@
 #define __FLT32X_HAS_QUIET_NAN__ 1
 #define __ATOMIC_CONSUME 1
 #define __nocona__ 1
-#define __GNUC_MINOR__ 3
+#define __GNUC_MINOR__ 1
 #define __GLIBCXX_TYPE_INT_N_0 __int128
 #define __INT_FAST16_WIDTH__ 16
 #define __UINTMAX_MAX__ 0xffffffffffffffffULL

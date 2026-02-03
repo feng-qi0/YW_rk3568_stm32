@@ -14,6 +14,7 @@
 #include <QGroupBox>
 #include <QFrame>
 #include <QRadioButton> // For motor direction
+#include <QTimer> // For sensor data updates
 
 class RK3568ControlPanel : public QWidget
 {
@@ -115,6 +116,9 @@ private:
     QGroupBox *logCard;
     QVBoxLayout *logCardLayout;
     QTextEdit *logTextBox;
+
+    // Timer for sensor updates
+    QTimer *sensorUpdateTimer;
 };
 
 #endif // RK3568CONTROLPANEL_H
