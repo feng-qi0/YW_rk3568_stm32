@@ -1,4 +1,5 @@
 #include "widget.h"
+#include <QApplication>
 // #include "ui_widget.h" // 不再需要包含 ui_widget.h
 
 Widget::Widget(QWidget *parent)
@@ -11,18 +12,20 @@ Widget::Widget(QWidget *parent)
     // 创建 RK3568ControlPanel 实例
     controlPanel = new RK3568ControlPanel(this);
 
-    // 可以选择隐藏当前的 Widget 窗口，只显示新窗口
+    // 设置主窗口属性
+    this->setWindowTitle(tr("RK3568 智能网关控制系统"));
+    this->resize(1400, 900);
+
+    // 将控制面板设置为主窗口的布局
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->addWidget(controlPanel);
+    layout->setContentsMargins(0, 0, 0, 0); // 移除边距
+
+    // 显示主窗口
+    this->show();
+
+    // 隐藏原始的Widget窗口，只显示控制面板
     // this->hide();
-
-    // 或者，将新窗口设置为主窗口的中央部件（如果 Widget 本身是主窗口）
-    // 但通常我们会直接让 RK3568ControlPanel 成为主窗口
-    // 这里我们直接显示新窗口
-    controlPanel->show();
-
-    // 如果你想让 Widget 窗口作为新窗口的父窗口（非模态对话框形式）
-    // controlPanel->setParent(this);
-    // controlPanel->show();
-    // this->show(); // 然后显示父窗口
 }
 
 Widget::~Widget()

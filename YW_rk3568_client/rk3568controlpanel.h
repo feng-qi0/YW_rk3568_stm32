@@ -13,8 +13,16 @@
 #include <QTextEdit>
 #include <QGroupBox>
 #include <QFrame>
-#include <QRadioButton> // For motor direction
-#include <QTimer> // For sensor data updates
+#include <QRadioButton>
+#include <QTimer>
+#include <QVideoWidget> // For video display
+#include <QMediaPlayer> // For video playback
+#include <QNetworkAccessManager> // For HTTP requests
+#include <QNetworkRequest> // For HTTP requests
+#include <QNetworkReply> // For HTTP responses
+#include <QJsonObject> // For JSON parsing
+#include <QJsonDocument> // For JSON parsing
+#include <QJsonArray> // For JSON parsing
 
 class RK3568ControlPanel : public QWidget
 {
@@ -33,10 +41,6 @@ signals:
     void cameraSnapshotRequested();
     void cameraRecordToggleRequested();
 
-private slots:
-    // Slot for motor direction buttons to ensure mutual exclusivity
-    void onMotorDirectionChanged();
-
 private:
     void setupUI();
     void setupConnections();
@@ -50,15 +54,18 @@ private:
     QLabel *titleLabel;
     QLabel *statusLabel;
 
-    // Main splitter
-    QSplitter *mainSplitter;
-
-    // Left column widgets
+    // Main grid layout (replacing splitter for better alignment with HTML design)
+    QGridLayout *mainGridLayout;
     QWidget *leftColumnWidget;
-    QVBoxLayout *leftColumnLayout;
-    QGroupBox *videoCard;
+    QWidget *rightColumnWidget;
+    QVBoxLayout *leftColumnLayout; // 添加缺失的声明
+
+    // Video card
+    QFrame *videoCard;
     QVBoxLayout *videoCardLayout;
     QLabel *videoDisplayLabel;
+    QVideoWidget *videoWidget; // 新增视频组件
+    QMediaPlayer *mediaPlayer; // 新增媒体播放器
     QGridLayout *videoControlsLayout;
     QPushButton *streamStartBtn;
     QPushButton *streamStopBtn;
@@ -66,7 +73,7 @@ private:
     QPushButton *recordBtn;
 
     // Sensor row widgets
-    QWidget *sensorRowWidget;
+    QFrame *sensorRowWidget;
     QGridLayout *sensorGridLayout;
     struct SensorCard {
         QFrame *frame;
@@ -79,12 +86,8 @@ private:
     SensorCard lightCard;
     SensorCard irCard;
 
-    // Right column widgets
-    QWidget *rightColumnWidget;
-    QVBoxLayout *rightColumnLayout;
-
     // Control panel card
-    QGroupBox *controlPanelCard;
+    QFrame *controlPanelCard;
     QVBoxLayout *controlPanelLayout;
 
     // LED control item
@@ -113,12 +116,30 @@ private:
     QCheckBox *buzzerSwitch;
 
     // Log card
-    QGroupBox *logCard;
+    QFrame *logCard;
     QVBoxLayout *logCardLayout;
     QTextEdit *logTextBox;
 
     // Timer for sensor updates
     QTimer *sensorUpdateTimer;
+
+    // Network manager for HTTP requests
+    QNetworkAccessManager *networkManager;
+
+public slots:
+    void updateSensorData(double temp, double humi, double light, int ir);
+
+private slots:
+    void updateSensorDisplay();
+    void handleSensorDataResponse(QNetworkReply *reply);
+    void handleCameraControlResponse(QNetworkReply *reply);
+    void handleHardwareControlResponse(QNetworkReply *reply);
+    // Slot for motor direction buttons to ensure mutual exclusivity
+    void onMotorDirectionChanged();
+
+private:
+    void sendHardwareControlCommand();
+    void sendCameraCommand(const QString &command);
 };
 
 #endif // RK3568CONTROLPANEL_H
