@@ -51,6 +51,7 @@ void ControlPanelWidget::setupUI()
     ledNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
 
     ledSwitch = new QCheckBox();
+    ledSwitch->setObjectName("fallback"); // 使用传统复选框样式
     ledSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
 
     ledHeaderLayout->addWidget(ledNameLabel);
@@ -86,6 +87,7 @@ void ControlPanelWidget::setupUI()
     motorNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
 
     motorSwitch = new QCheckBox();
+    motorSwitch->setObjectName("fallback"); // 使用传统复选框样式
     motorSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
 
     motorHeaderLayout->addWidget(motorNameLabel);
@@ -148,6 +150,7 @@ void ControlPanelWidget::setupUI()
     buzzerNameLabel = new QLabel("紧急蜂鸣报警");
     buzzerNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
     buzzerSwitch = new QCheckBox();
+    buzzerSwitch->setObjectName("fallback"); // 使用传统复选框样式
     buzzerSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
 
     buzzerControlLayout->addWidget(buzzerNameLabel);
