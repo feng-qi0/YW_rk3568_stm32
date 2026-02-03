@@ -25,16 +25,8 @@ RK3568ControlPanel::RK3568ControlPanel(QWidget *parent)
 
 void RK3568ControlPanel::setupUI()
 {
-    // 加载样式表
-    QFile file(":/styles.qss");
-    if (file.open(QFile::ReadOnly)) {
-        this->setStyleSheet(file.readAll());
-        file.close();
-    }
-
     // --- 主窗口布局 ---
     mainLayout = new QVBoxLayout(this);
-    this->setStyleSheet("QWidget { background-color: #f0f2f5; }"); // 设置整体背景色
     this->setWindowTitle(tr("RK3568 智能网关控制系统"));
     this->resize(1400, 900); // 增加初始窗口大小
 

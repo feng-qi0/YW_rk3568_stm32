@@ -46,12 +46,13 @@ void ControlPanelWidget::setupUI()
     
     ledControlLayout = new QVBoxLayout(ledControlItem);
     ledHeaderLayout = new QHBoxLayout();
-    
+
     ledNameLabel = new QLabel("LED 照明灯");
     ledNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
-    
+
     ledSwitch = new QCheckBox();
-    
+    ledSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
+
     ledHeaderLayout->addWidget(ledNameLabel);
     ledHeaderLayout->addStretch();
     ledHeaderLayout->addWidget(ledSwitch);
@@ -80,12 +81,13 @@ void ControlPanelWidget::setupUI()
     
     motorControlLayout = new QVBoxLayout(motorControlItem);
     motorHeaderLayout = new QHBoxLayout();
-    
+
     motorNameLabel = new QLabel("直流电机控制");
     motorNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
-    
+
     motorSwitch = new QCheckBox();
-    
+    motorSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
+
     motorHeaderLayout->addWidget(motorNameLabel);
     motorHeaderLayout->addStretch();
     motorHeaderLayout->addWidget(motorSwitch);
@@ -146,7 +148,8 @@ void ControlPanelWidget::setupUI()
     buzzerNameLabel = new QLabel("紧急蜂鸣报警");
     buzzerNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
     buzzerSwitch = new QCheckBox();
-    
+    buzzerSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
+
     buzzerControlLayout->addWidget(buzzerNameLabel);
     buzzerControlLayout->addStretch();
     buzzerControlLayout->addWidget(buzzerSwitch);

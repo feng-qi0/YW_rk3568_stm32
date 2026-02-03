@@ -9,10 +9,13 @@ Widget::Widget(QWidget *parent)
     // , ui(new Ui::Widget) // 不再需要 ui 成员
     , controlPanel(nullptr) // 初始化 controlPanel 指针
 {
-    // 设置应用程序样式
+    // 创建 RK3568ControlPanel 实例
+    controlPanel = new RK3568ControlPanel(this);
+
+    // 设置应用程序样式 - 在所有组件创建后设置样式表
     QFile file(":/styles.qss");
     if (file.open(QFile::ReadOnly)) {
-        this->setStyleSheet(file.readAll());
+        qApp->setStyleSheet(file.readAll());  // 应用到整个应用程序
         file.close();
     } else {
         // 如果无法加载QSS文件，尝试使用系统默认样式
@@ -20,9 +23,6 @@ Widget::Widget(QWidget *parent)
     }
 
     // ui->setupUi(this); // 不再设置 Widget 的 UI
-
-    // 创建 RK3568ControlPanel 实例
-    controlPanel = new RK3568ControlPanel(this);
 
     // 设置主窗口属性
     this->setWindowTitle(tr("RK3568 智能网关控制系统"));
