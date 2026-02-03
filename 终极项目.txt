@@ -1,0 +1,141 @@
+一、项目分组
+1. 	杨青云，温明杰				组长：温明杰
+2. 	权宇，陈嘉桦				组长：权宇
+3. 	侯景琦，左海生				组长：左海生
+4. 	赵一寒，王雷				组长：赵一寒
+5. 	张梓萱，孟家豪				组长：孟家豪
+6.  	周智勇，凌雪婷				组长：凌雪婷
+7.	刘淑邑，欧阳舜				组长：刘淑邑
+8.	谢先旺，祁异凡，孙宇豪		组长：谢先旺
+
+组长职责：
+1. 负责组会讨论需求
+2. 负责项目需求分配
+3. 代码整合管理（git）
+4. 文档整理
+
+C/C++14 + CMake + Mongoose/nginx + mjpg-streamer/gstreamer/ffmpeg + SQLite3 + Qt6 + Web
+
+一、web端：
+	1. 从rk3568上的摄像头拉取视频流,而且能录视频和拍照，存储到开发板指定目录
+		1.1 mongoose/boa/nginx
+		1.2 mjpeg-streamer/ffmpeg/gstreamer
+	2. web端还要显示单片机上的传感器传来的温度，湿度，光照等数据信息，同时在web端还可以下发命令，控制单片机的硬件
+
+二、Qt端：和web端功能一致(web和Qt端数据要同步)
+	
+三、rk3568部分（边缘节点）
+	1. 系统移植：使用buildroot移植mongoose/boa/nginx,mjpg-streamer/gstreamer/ffmpeg，数据库等
+	2. 主程序：负责转发任务
+
+四，其他
+
+
+二、项目介绍
+	1. web/qt模块
+	2. rk3568模块
+	3. 单片机模块
+	4. 通信模块
+		4.1 zigbee
+		4.2 mqtt（推荐）
+	
+RK3568 智能控制系统
+├── Web服务器 (Boa/Mongoose/nginx )
+├── 视频流服务 (mjpg-streamer)
+├── 设备控制层
+│   ├── LED控制 (GPIO)
+│   └── Zigbee风扇控制 (串口通信)
+└── Web界面
+		 ├── 实时视频显示
+		 ├── 设备控制面板
+		 └── 系统管理功能
+
+网页界面(HTML+JS) → rk3568上的Boa/Mongoose/nginx Web服务器 → Zigbee串口通信 → Zigbee设备 → 单片机
+
+三、整理问题
+	要把所有遇到的问题及解决方案整理出来
+	每天都要把遇到的问题整理出来，讨论解决方案（组长整理）
+
+四、项目细分
+	1. rk3568模块
+		1. 主程序多线程接收和传输单片机的每个外设的数据
+		2. 和web交互
+		3. 和上位机交互
+		4. 摄像头/usb/csi
+		5. 系统移植（buildroot）
+			1. boa/nginx/mongoose
+			2. mjpg-streamer/gstreamer/ffmpeg
+			注意：
+				mjpg-streamer：USB接口
+				gstreamer：CSI接口
+		6. 使用overlay机制（注：overlay是快速部署机制）
+	2. web模块
+		1. 按钮（控制电机 风扇，开关，风速，正反转，进度条控制风速）
+		2. 拍照/视频播放/录制模块
+		3. 设备控制：
+			LED灯：开/关，亮度（进度条控制亮度，按钮控制开关）
+	3. 上位机模块
+		1. 查看设备状态
+		2. 串口模块
+		3. 数据可视化模块
+		4. 日志模块
+		5. 数据库模块
+		6. 控制单片机外设
+		7. 显示视频流，录制，拍照
+		8. 告警模块
+	4. 单片机模块（至少6个外设,要有上传和下发功能）
+		1. LED灯
+		2. 电机（风扇）
+		3. 舵机
+		4....
+	5. 通信模块
+		1. zigbee
+		2. mqtt
+		3. 串口
+
+
+rk3568涉及到的相关技术：
+1. 系统移植
+2. 软件移植
+	2.1 web服务器（nginx,mongoose,boa(cgi)）
+	2.2 视频流服务器（mjpg-streamer,gstreamer）
+	2.3 mqtt
+	2.4 数据库
+	2.5 json
+	2.6 log
+3. 数据格式
+	3.1 json格式
+4. 主程序编写语言选择
+	4.1 C语言
+	4.2 C++14
+5. 主程序
+	使用多线程实现各种功能
+	日志系统
+6. json解析：
+	6.1 单片机：cjson
+	6.2 Qt：QJson
+	6.3 主程序：
+		6.3.1 C语言：CJson
+		6.3.2 C++：jsoncpp/rapidjson/nlohmann
+
+
+json格式建议：
+{
+    "source":"stm32",
+    "driver":"dht11",
+    "id":1,
+    "data":{
+        "data_time":1756899527
+        "humi_int":32,
+        "humi_deci":0,
+        "temp_int":28,
+        "temp_deci":4,
+        "check_sum":64
+    }
+}
+
+
+
+
+
+	
