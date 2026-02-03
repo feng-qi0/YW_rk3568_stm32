@@ -1,0 +1,12 @@
+release/main.o
+release/rk3568controlpanel.o
+release/widget.o
+release/sensorwidget.o
+release/controlpanelwidget.o
+release/logwidget.o
+release/qrc_resources.o
+release/moc_rk3568controlpanel.o
+release/moc_widget.o
+release/moc_sensorwidget.o
+release/moc_controlpanelwidget.o
+release/moc_logwidget.o

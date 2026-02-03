@@ -5,24 +5,19 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QGridLayout>
-#include <QSplitter>
 #include <QLabel>
 #include <QPushButton>
-#include <QSlider>
-#include <QCheckBox>
-#include <QTextEdit>
-#include <QGroupBox>
-#include <QFrame>
-#include <QRadioButton>
 #include <QTimer>
-#include <QVideoWidget> // For video display
-#include <QMediaPlayer> // For video playback
-#include <QNetworkAccessManager> // For HTTP requests
-#include <QNetworkRequest> // For HTTP requests
-#include <QNetworkReply> // For HTTP responses
-#include <QJsonObject> // For JSON parsing
-#include <QJsonDocument> // For JSON parsing
-#include <QJsonArray> // For JSON parsing
+#include <QVideoWidget>
+#include <QMediaPlayer>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include "sensorwidget.h"
+#include "controlpanelwidget.h"
+#include "logwidget.h"
 
 class RK3568ControlPanel : public QWidget
 {
@@ -54,71 +49,41 @@ private:
     QLabel *titleLabel;
     QLabel *statusLabel;
 
-    // Main grid layout (replacing splitter for better alignment with HTML design)
-    QGridLayout *mainGridLayout;
+    // Main layout
+    QHBoxLayout *mainHBoxLayout;
     QWidget *leftColumnWidget;
-    QWidget *rightColumnWidget;
-    QVBoxLayout *leftColumnLayout; // 添加缺失的声明
+    QVBoxLayout *leftColumnLayout;
 
     // Video card
     QFrame *videoCard;
     QVBoxLayout *videoCardLayout;
+    QLabel *videoTitleLabel;
     QLabel *videoDisplayLabel;
-    QVideoWidget *videoWidget; // 新增视频组件
-    QMediaPlayer *mediaPlayer; // 新增媒体播放器
+    QVideoWidget *videoWidget;
+    QMediaPlayer *mediaPlayer;
     QGridLayout *videoControlsLayout;
     QPushButton *streamStartBtn;
     QPushButton *streamStopBtn;
     QPushButton *snapshotBtn;
     QPushButton *recordBtn;
 
-    // Sensor row widgets
+    // Sensor row
     QFrame *sensorRowWidget;
     QGridLayout *sensorGridLayout;
-    struct SensorCard {
-        QFrame *frame;
-        QLabel *nameLabel;
-        QLabel *valueLabel;
-        QLabel *unitLabel;
-    };
-    SensorCard tempCard;
-    SensorCard humiCard;
-    SensorCard lightCard;
-    SensorCard irCard;
+    SensorWidget *tempCard;
+    SensorWidget *humiCard;
+    SensorWidget *lightCard;
+    SensorWidget *irCard;
 
-    // Control panel card
-    QFrame *controlPanelCard;
-    QVBoxLayout *controlPanelLayout;
+    // Right column
+    QWidget *rightColumnWidget;
+    QVBoxLayout *rightColumnLayout;
 
-    // LED control item
-    QFrame *ledControlItem;
-    QVBoxLayout *ledControlLayout;
-    QHBoxLayout *ledHeaderLayout;
-    QLabel *ledNameLabel;
-    QCheckBox *ledSwitch;
-    QSlider *ledBrightnessSlider;
+    // Control panel widget (now a separate component)
+    ControlPanelWidget *controlPanelWidget;
 
-    // Motor control item
-    QFrame *motorControlItem;
-    QVBoxLayout *motorControlLayout;
-    QHBoxLayout *motorHeaderLayout;
-    QLabel *motorNameLabel;
-    QCheckBox *motorSwitch;
-    QSlider *motorSpeedSlider;
-    QHBoxLayout *motorDirectionLayout;
-    QPushButton *dirForwardBtn;
-    QPushButton *dirReverseBtn;
-
-    // Buzzer control item
-    QFrame *buzzerControlItem;
-    QHBoxLayout *buzzerControlLayout;
-    QLabel *buzzerNameLabel;
-    QCheckBox *buzzerSwitch;
-
-    // Log card
-    QFrame *logCard;
-    QVBoxLayout *logCardLayout;
-    QTextEdit *logTextBox;
+    // Log widget (now a separate component)
+    LogWidget *logWidget;
 
     // Timer for sensor updates
     QTimer *sensorUpdateTimer;
@@ -134,8 +99,6 @@ private slots:
     void handleSensorDataResponse(QNetworkReply *reply);
     void handleCameraControlResponse(QNetworkReply *reply);
     void handleHardwareControlResponse(QNetworkReply *reply);
-    // Slot for motor direction buttons to ensure mutual exclusivity
-    void onMotorDirectionChanged();
 
 private:
     void sendHardwareControlCommand();

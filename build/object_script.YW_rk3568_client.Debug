@@ -1,0 +1,12 @@
+debug/main.o
+debug/rk3568controlpanel.o
+debug/widget.o
+debug/sensorwidget.o
+debug/controlpanelwidget.o
+debug/logwidget.o
+debug/qrc_resources.o
+debug/moc_rk3568controlpanel.o
+debug/moc_widget.o
+debug/moc_sensorwidget.o
+debug/moc_controlpanelwidget.o
+debug/moc_logwidget.o

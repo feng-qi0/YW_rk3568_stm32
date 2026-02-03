@@ -18,14 +18,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     rk3568controlpanel.cpp \
-    widget.cpp
+    widget.cpp \
+    sensorwidget.cpp \
+    controlpanelwidget.cpp \
+    logwidget.cpp
 
 HEADERS += \
     rk3568controlpanel.h \
-    widget.h
+    widget.h \
+    sensorwidget.h \
+    controlpanelwidget.h \
+    logwidget.h
 
 FORMS += \
     widget.ui
+
+RESOURCES += \
+    resources.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

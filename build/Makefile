@@ -264,7 +264,8 @@ Makefile: ../YW_rk3568_client/YW_rk3568_client.pro ../../../E_Ascll/Qt_5.14.2_/5
 		../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/lib/Qt5Network.prl \
 		../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/lib/Qt5Core.prl \
 		../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/lib/qtmain.prl \
-		../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/mkspecs/features/build_pass.prf
+		../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/mkspecs/features/build_pass.prf \
+		../YW_rk3568_client/resources.qrc
 	$(QMAKE) -o Makefile ..\YW_rk3568_client\YW_rk3568_client.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/mkspecs/features/spec_pre.prf:
 ../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/mkspecs/qdevice.pri:
@@ -461,6 +462,7 @@ Makefile: ../YW_rk3568_client/YW_rk3568_client.pro ../../../E_Ascll/Qt_5.14.2_/5
 ../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/lib/Qt5Core.prl:
 ../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/lib/qtmain.prl:
 ../../../E_Ascll/Qt_5.14.2_/5.14.2/mingw73_64/mkspecs/features/build_pass.prf:
+../YW_rk3568_client/resources.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\YW_rk3568_client\YW_rk3568_client.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

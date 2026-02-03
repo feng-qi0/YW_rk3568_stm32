@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_RK3568ControlPanel_t {
-    QByteArrayData data[25];
-    char stringdata0[410];
+    QByteArrayData data[24];
+    char stringdata0[386];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -55,8 +55,7 @@ QT_MOC_LITERAL(19, 282, 24), // "handleSensorDataResponse"
 QT_MOC_LITERAL(20, 307, 14), // "QNetworkReply*"
 QT_MOC_LITERAL(21, 322, 5), // "reply"
 QT_MOC_LITERAL(22, 328, 27), // "handleCameraControlResponse"
-QT_MOC_LITERAL(23, 356, 29), // "handleHardwareControlResponse"
-QT_MOC_LITERAL(24, 386, 23) // "onMotorDirectionChanged"
+QT_MOC_LITERAL(23, 356, 29) // "handleHardwareControlResponse"
 
     },
     "RK3568ControlPanel\0ledControlChanged\0"
@@ -69,8 +68,7 @@ QT_MOC_LITERAL(24, 386, 23) // "onMotorDirectionChanged"
     "updateSensorData\0temp\0humi\0light\0ir\0"
     "updateSensorDisplay\0handleSensorDataResponse\0"
     "QNetworkReply*\0reply\0handleCameraControlResponse\0"
-    "handleHardwareControlResponse\0"
-    "onMotorDirectionChanged"
+    "handleHardwareControlResponse"
 };
 #undef QT_MOC_LITERAL
 
@@ -80,7 +78,7 @@ static const uint qt_meta_data_RK3568ControlPanel[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -88,21 +86,20 @@ static const uint qt_meta_data_RK3568ControlPanel[] = {
        7,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   79,    2, 0x06 /* Public */,
-       5,    3,   84,    2, 0x06 /* Public */,
-       8,    1,   91,    2, 0x06 /* Public */,
-       9,    0,   94,    2, 0x06 /* Public */,
-      10,    0,   95,    2, 0x06 /* Public */,
-      11,    0,   96,    2, 0x06 /* Public */,
-      12,    0,   97,    2, 0x06 /* Public */,
+       1,    2,   74,    2, 0x06 /* Public */,
+       5,    3,   79,    2, 0x06 /* Public */,
+       8,    1,   86,    2, 0x06 /* Public */,
+       9,    0,   89,    2, 0x06 /* Public */,
+      10,    0,   90,    2, 0x06 /* Public */,
+      11,    0,   91,    2, 0x06 /* Public */,
+      12,    0,   92,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      13,    4,   98,    2, 0x0a /* Public */,
-      18,    0,  107,    2, 0x08 /* Private */,
-      19,    1,  108,    2, 0x08 /* Private */,
-      22,    1,  111,    2, 0x08 /* Private */,
-      23,    1,  114,    2, 0x08 /* Private */,
-      24,    0,  117,    2, 0x08 /* Private */,
+      13,    4,   93,    2, 0x0a /* Public */,
+      18,    0,  102,    2, 0x08 /* Private */,
+      19,    1,  103,    2, 0x08 /* Private */,
+      22,    1,  106,    2, 0x08 /* Private */,
+      23,    1,  109,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Bool, QMetaType::Int,    3,    4,
@@ -119,7 +116,6 @@ static const uint qt_meta_data_RK3568ControlPanel[] = {
     QMetaType::Void, 0x80000000 | 20,   21,
     QMetaType::Void, 0x80000000 | 20,   21,
     QMetaType::Void, 0x80000000 | 20,   21,
-    QMetaType::Void,
 
        0        // eod
 };
@@ -142,7 +138,6 @@ void RK3568ControlPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         case 9: _t->handleSensorDataResponse((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         case 10: _t->handleCameraControlResponse((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         case 11: _t->handleHardwareControlResponse((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 12: _t->onMotorDirectionChanged(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -253,13 +248,13 @@ int RK3568ControlPanel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 12;
     }
     return _id;
 }

@@ -1,0 +1,234 @@
+/* Global variables */
+/* Note: Qt doesn't support CSS variables directly, so we'll define common values here */
+
+/* Common colors */
+QRgb { qproperty-primary: #5c67f2; }
+QRgb { qproperty-success: #10b981; }
+QRgb { qproperty-danger: #ef4444; }
+QRgb { qproperty-warning: #f59e0b; }
+QRgb { qproperty-info: #3b82f6; }
+QRgb { qproperty-bg: #f0f2f5; }
+QRgb { qproperty-card: #ffffff; }
+
+/* Main window background */
+QWidget {
+    background-color: #f0f2f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #333;
+}
+
+/* Header styles */
+#headerWidget {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #4f46e5, stop:1 #7c3aed);
+    color: white;
+    border-radius: 16px;
+    min-height: 60px;
+    margin: 0 20px 20px 20px;
+}
+
+#titleLabel {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+#statusLabel {
+    background-color: rgba(255, 255, 255, 30);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* Card styles */
+QFrame#card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    /* box-shadow simulation - Qt doesn't support box-shadow directly */
+    border: 1px solid #e2e8f7;
+}
+
+#cardTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1f2937;
+}
+
+/* Video box styles */
+#videoDisplayLabel {
+    background-color: black;
+    color: white;
+    border-radius: 12px;
+    border: 4px solid #fff;
+}
+
+QVideoWidget {
+    background-color: black;
+    border-radius: 12px;
+    border: 4px solid #fff;
+}
+
+/* Button styles */
+QPushButton {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: white;
+    min-height: 40px;
+}
+
+QPushButton#streamStartBtn {
+    background: #3b82f6; /* info color */
+}
+
+QPushButton#streamStopBtn {
+    background: #64748b; /* gray color */
+}
+
+QPushButton#snapshotBtn {
+    background: #10b981; /* success color */
+}
+
+QPushButton#recordBtn {
+    background: #ef4444; /* danger color */
+}
+
+QPushButton#dirForwardBtn, QPushButton#dirReverseBtn {
+    background: #e2e8f0;
+    color: #64748b;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    font-size: 15px;
+    min-height: 45px;
+}
+
+QPushButton#dirForwardBtn:checked, QPushButton#dirReverseBtn:checked {
+    background: #fff;
+    color: #5c67f2;
+    border: 2px solid #5c67f2;
+    font-weight: bold;
+}
+
+/* Control item styles */
+QFrame#controlItem {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #edf2f7;
+}
+
+#controlItem QLabel {
+    font-weight: 600;
+    font-size: 15px;
+    min-height: 20px;
+}
+
+/* Slider styles */
+QSlider::groove:horizontal {
+    border: 1px solid #999999;
+    height: 8px;
+    background: #d3d3d3;
+    margin: 4px 0;
+}
+
+QSlider::handle:horizontal {
+    background: #5c67f2;
+    border: 1px solid #5c67f2;
+    width: 18px;
+    margin: -2px 0;
+    border-radius: 9px;
+}
+
+/* Sensor card styles */
+QFrame#sensorCard {
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 220px;
+    max-width: 220px;
+    min-height: 150px;
+    max-height: 150px;
+}
+
+#sensorNameLabel {
+    font-weight: normal;
+    font-size: 15px;
+}
+
+#sensorValueLabel {
+    font-size: 24px;
+    font-weight: 800;
+    color: #5c67f2;
+    margin: 6px 0;
+}
+
+#sensorUnitLabel {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* Buzzer warning style */
+QFrame#buzzerControlItem {
+    background: #fff9db;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 0px;
+    border-left: 4px solid #f59e0b; /* warning color */
+}
+
+/* Log container styles */
+#logTextBox {
+    background-color: #0f172a;
+    color: #38bdf8;
+    border-radius: 12px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    border: 1px solid #1e293b;
+    padding: 15px;
+}
+
+/* Checkbox styles */
+QCheckBox {
+    spacing: 5px;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: #cbd5e1;
+    border: 1px solid #94a3b8;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #5c67f2;
+    border: 1px solid #5c67f2;
+}
+
+/* Scroll bar styles */
+QScrollBar:vertical {
+    border: none;
+    background: #f1f1f1;
+    width: 10px;
+    border-radius: 5px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #c1c1c1;
+    border-radius: 5px;
+    min-height: 20px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #a8a8a8;
+}
