@@ -7,8 +7,8 @@ QWidget {
 
 /* Header styles */
 #headerWidget {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #4f46e5, stop:1 #7c3aed);
-    color: white;
+    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 1, stop: 0 #4f46e5, stop: 1 #7c3aed);  /* 使用渐变背景匹配HTML设计 */
+    color: #ffffff;  /* 确保所有子元素继承白色文字颜色 */
     border-radius: 16px;
     min-height: 60px;
     margin: 0 20px 20px 20px;
@@ -20,7 +20,8 @@ QWidget {
     font-size: 20px;
     font-weight: 800;
     letter-spacing: 1px;
-    color: white;
+    color: #ffffff;  /* 确保标题颜色为白色，提高对比度 */
+    background: transparent;  /* 背景透明 */
 }
 
 #statusLabel {
@@ -28,12 +29,12 @@ QWidget {
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 13px;
-    color: white;
+    color: #ffffff;  /* 确保状态标签文字颜色为白色 */
 }
 
 /* Card styles */
 QFrame#card {
-    background: #ffffff;
+    background: #f8fafc;  /* 更接近整体背景色，减少突兀感 */
     border-radius: 16px;
     padding: 20px;
     border: 1px solid #e2e8f7;
@@ -100,7 +101,7 @@ QPushButton#dirForwardBtn, QPushButton#dirReverseBtn {
 }
 
 QPushButton#dirForwardBtn:checked, QPushButton#dirReverseBtn:checked {
-    background: #fff;
+    background: #f8fafc;  /* 使用与整体设计一致的浅灰色，而不是白色 */
     color: #5c67f2;
     border: 2px solid #5c67f2;
     font-weight: bold;
@@ -140,7 +141,7 @@ QSlider::handle:horizontal {
 
 /* Sensor card styles */
 QFrame#sensorCard {
-    background: #fff;
+    background: #f8fafc;  /* 统一背景色，减少突兀感 */
     padding: 18px;
     border-radius: 12px;
     text-align: center;
@@ -148,6 +149,7 @@ QFrame#sensorCard {
     max-width: 220px;
     min-height: 150px;
     max-height: 150px;
+    border: 1px solid #e2e8f7;  /* 添加边框以更好地融入整体设计 */
 }
 
 #sensorNameLabel {
@@ -244,6 +246,57 @@ QCheckBox#fallback::indicator:checked::after {
     font-size: 12px;
     color: white;
     font-weight: bold;
+}
+
+/* Standard checkbox style with visible checkmark */
+QCheckBox#modern {
+    spacing: 8px;
+}
+
+QCheckBox#modern::indicator {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #94a3b8;
+    background: white;
+    border-radius: 3px;
+}
+
+QCheckBox#modern::indicator:unchecked {
+    background-color: white;
+    border: 2px solid #94a3b8;
+}
+
+QCheckBox#modern::indicator:checked {
+    background-color: #5c67f2;
+    border: 2px solid #5c67f2;
+    image: url(:/images/checkmark.png); /* 使用图片作为勾号，如果没有则使用下面的样式 */
+}
+
+/* 使用字符作为勾号 */
+QCheckBox#modern::indicator:checked::after {
+    content: "✓";
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+
+QCheckBox#modern::indicator:unchecked:pressed {
+    background-color: #e2e8f0;
+}
+
+QCheckBox#modern::indicator:checked:pressed {
+    background-color: #4f56d0;
+}
+
+QCheckBox#modern::indicator:indeterminate {
+    background-color: #cbd5e1;
+    border: 2px solid #94a3b8;
+}
+
+QCheckBox#modern::indicator:unchecked::hover {
+    border: 2px solid #5c67f2;
 }
 
 /* Scroll bar styles */

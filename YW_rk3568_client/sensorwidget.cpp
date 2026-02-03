@@ -4,18 +4,8 @@
 SensorWidget::SensorWidget(const QString &name, const QString &unit, QWidget *parent)
     : QFrame(parent)
 {
-    // 设置样式表
+    // 设置样式对象名称，以便应用全局样式表
     this->setObjectName("sensorCard");
-    this->setStyleSheet("#sensorCard {"
-                        "    background: #fff;"
-                        "    padding: 18px;"
-                        "    border-radius: 12px;"
-                        "    text-align: center;"
-                        "    min-width: 220px;"
-                        "    max-width: 220px;"
-                        "    min-height: 150px;"
-                        "    max-height: 150px;"
-                        "}");
 
     // 创建布局
     QVBoxLayout *layout = new QVBoxLayout(this);

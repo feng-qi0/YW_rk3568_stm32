@@ -15,8 +15,12 @@ Widget::Widget(QWidget *parent)
     // 设置应用程序样式 - 在所有组件创建后设置样式表
     QFile file(":/styles.qss");
     if (file.open(QFile::ReadOnly)) {
-        qApp->setStyleSheet(file.readAll());  // 应用到整个应用程序
+        QString stylesheet = file.readAll();
+        qApp->setStyleSheet(stylesheet);  // 应用到整个应用程序
         file.close();
+
+        // 立即应用样式表，确保所有组件都能看到更改
+        qApp->processEvents();
     } else {
         // 如果无法加载QSS文件，尝试使用系统默认样式
         QApplication::setStyle(QStyleFactory::create("Fusion"));
@@ -29,7 +33,7 @@ Widget::Widget(QWidget *parent)
     this->resize(1400, 900);
 
     // 将控制面板设置为主窗口的布局
-    QVBoxLayout *layout = new QVBoxLayout(this);
+    QVBoxLayout *layout = new QVBoxLayout(this);// 创建一个垂直布局，并将控制面板添加到其中
     layout->addWidget(controlPanel);
     layout->setContentsMargins(0, 0, 0, 0); // 移除边距
 

@@ -10,14 +10,8 @@ ControlPanelWidget::ControlPanelWidget(QWidget *parent)
 
 void ControlPanelWidget::setupUI()
 {
-    // 设置样式
+    // 设置样式对象名称，以便应用全局样式表
     this->setObjectName("card");
-    this->setStyleSheet("QFrame#card {"
-                        "    background: #ffffff;"
-                        "    border-radius: 16px;"
-                        "    padding: 20px;"
-                        "    border: 1px solid #e2e8f7;"
-                        "}");
 
     // 主布局
     mainLayout = new QVBoxLayout(this);
@@ -34,13 +28,6 @@ void ControlPanelWidget::setupUI()
     // LED 控制项
     ledControlItem = new QFrame();
     ledControlItem->setObjectName("controlItem");
-    ledControlItem->setStyleSheet("QFrame#controlItem {"
-                                  "    background: #f8fafc;"
-                                  "    padding: 18px;"
-                                  "    border-radius: 12px;"
-                                  "    margin-bottom: 12px;"
-                                  "    border: 1px solid #edf2f7;"
-                                  "}");
     ledControlItem->setMinimumHeight(120);
     ledControlItem->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     
@@ -51,7 +38,8 @@ void ControlPanelWidget::setupUI()
     ledNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
 
     ledSwitch = new QCheckBox();
-    ledSwitch->setObjectName("fallback"); // 使用传统复选框样式
+    ledSwitch->setObjectName("modern"); // 使用现代复选框样式，带勾号
+    ledSwitch->setStyleSheet(""); // 确保不使用内联样式覆盖QSS
     ledSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
 
     ledHeaderLayout->addWidget(ledNameLabel);
@@ -70,13 +58,6 @@ void ControlPanelWidget::setupUI()
     // 电机控制项
     motorControlItem = new QFrame();
     motorControlItem->setObjectName("controlItem");
-    motorControlItem->setStyleSheet("QFrame#controlItem {"
-                                    "    background: #f8fafc;"
-                                    "    padding: 18px;"
-                                    "    border-radius: 12px;"
-                                    "    margin-bottom: 12px;"
-                                    "    border: 1px solid #edf2f7;"
-                                    "}");
     motorControlItem->setMinimumHeight(180);
     motorControlItem->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     
@@ -87,7 +68,8 @@ void ControlPanelWidget::setupUI()
     motorNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
 
     motorSwitch = new QCheckBox();
-    motorSwitch->setObjectName("fallback"); // 使用传统复选框样式
+    motorSwitch->setObjectName("modern"); // 使用现代复选框样式，带勾号
+    motorSwitch->setStyleSheet(""); // 确保不使用内联样式覆盖QSS
     motorSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
 
     motorHeaderLayout->addWidget(motorNameLabel);
@@ -104,17 +86,11 @@ void ControlPanelWidget::setupUI()
     dirForwardBtn->setCheckable(true);
     dirReverseBtn->setCheckable(true);
     dirForwardBtn->setChecked(true); // 默认为正转
-    
-    // 设置方向按钮样式
-    QString activeStyle = "QPushButton:checked { background: #fff; color: #5c67f2; "
-                          "border: 2px solid #5c67f2; font-weight: bold; font-size: 15px; "
-                          "min-height: 45px; }";
-    QString inactiveStyle = "QPushButton { background: #e2e8f0; color: #64748b; "
-                            "padding: 10px; border-radius: 6px; border: 2px solid transparent; "
-                            "font-size: 15px; min-height: 45px; }";
-    dirForwardBtn->setStyleSheet(inactiveStyle + activeStyle);
-    dirReverseBtn->setStyleSheet(inactiveStyle + activeStyle);
-    
+
+    // 设置对象名称以便全局样式表可以应用样式
+    dirForwardBtn->setObjectName("dirForwardBtn");
+    dirReverseBtn->setObjectName("dirReverseBtn");
+
     // 为方向按钮设置最小尺寸
     dirForwardBtn->setMinimumSize(110, 45);
     dirReverseBtn->setMinimumSize(110, 45);
@@ -136,13 +112,6 @@ void ControlPanelWidget::setupUI()
     // 蜂鸣器控制项
     buzzerControlItem = new QFrame();
     buzzerControlItem->setObjectName("buzzerControlItem");
-    buzzerControlItem->setStyleSheet("QFrame#buzzerControlItem {"
-                                     "    background: #fff9db;"
-                                     "    padding: 18px;"
-                                     "    border-radius: 12px;"
-                                     "    margin-bottom: 0px;"
-                                     "    border-left: 4px solid #f59e0b;"
-                                     "}");
     buzzerControlItem->setMinimumHeight(80);
     buzzerControlItem->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     
@@ -150,7 +119,8 @@ void ControlPanelWidget::setupUI()
     buzzerNameLabel = new QLabel("紧急蜂鸣报警");
     buzzerNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;");
     buzzerSwitch = new QCheckBox();
-    buzzerSwitch->setObjectName("fallback"); // 使用传统复选框样式
+    buzzerSwitch->setObjectName("modern"); // 使用现代复选框样式，带勾号
+    buzzerSwitch->setStyleSheet(""); // 确保不使用内联样式覆盖QSS
     buzzerSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
 
     buzzerControlLayout->addWidget(buzzerNameLabel);

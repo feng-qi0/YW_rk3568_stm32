@@ -3,10 +3,12 @@
 #include <QDateTime>
 #include <QFile> // 用于加载QSS样式文件
 
-
 RK3568ControlPanel::RK3568ControlPanel(QWidget *parent)
     : QWidget(parent)
 {
+    // 确保样式表可以正确应用到子控件
+    setStyleSheet("/* Apply base style */");
+
     setupUI();
     setupConnections();
 
@@ -26,13 +28,14 @@ RK3568ControlPanel::RK3568ControlPanel(QWidget *parent)
 void RK3568ControlPanel::setupUI()
 {
     // --- 主窗口布局 ---
-    mainLayout = new QVBoxLayout(this);
-    this->setWindowTitle(tr("RK3568 智能网关控制系统"));
+    mainLayout = new QVBoxLayout(this);// QVBoxLayout(this) 创建了一个垂直布局，并将其设置为窗口的主布局。
+    this->setWindowTitle(tr("RK3568 智能网关控制系统"));// tr的使用是为了支持多语言
     this->resize(1400, 900); // 增加初始窗口大小
 
     // --- 顶部标题栏 ---
     headerWidget = new QWidget();
     headerWidget->setObjectName("headerWidget");
+    headerWidget->setAutoFillBackground(true);  // 确保样式表正确应用
     headerLayout = new QHBoxLayout(headerWidget);
     headerLayout->setContentsMargins(20, 0, 20, 20);
     headerLayout->setSpacing(0);
