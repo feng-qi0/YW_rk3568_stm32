@@ -42,14 +42,19 @@ void ControlPanelWidget::setupUI()
     ledSwitch->setStyleSheet(""); // 确保不使用内联样式覆盖QSS
     ledSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
 
+    // LED值显示标签
+    ledValueLabel = new QLabel(QString::number(50) + "%");
+    ledValueLabel->setStyleSheet("font-weight: 600; font-size: 14px; color: #5c67f2; min-width: 40px;");
+
     ledHeaderLayout->addWidget(ledNameLabel);
     ledHeaderLayout->addStretch();
+    ledHeaderLayout->addWidget(ledValueLabel);  // 添加值显示标签
     ledHeaderLayout->addWidget(ledSwitch);
-    
+
     ledBrightnessSlider = new QSlider(Qt::Horizontal);
     ledBrightnessSlider->setRange(0, 100);
     ledBrightnessSlider->setValue(50);
-    
+
     ledControlLayout->addLayout(ledHeaderLayout);
     ledControlLayout->addWidget(ledBrightnessSlider);
     ledControlLayout->setContentsMargins(8, 8, 8, 8);
@@ -72,14 +77,19 @@ void ControlPanelWidget::setupUI()
     motorSwitch->setStyleSheet(""); // 确保不使用内联样式覆盖QSS
     motorSwitch->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed); // 确保复选框大小固定
 
+    // 电机值显示标签
+    motorValueLabel = new QLabel(QString::number(30) + "%");
+    motorValueLabel->setStyleSheet("font-weight: 600; font-size: 14px; color: #5c67f2; min-width: 40px;");
+
     motorHeaderLayout->addWidget(motorNameLabel);
     motorHeaderLayout->addStretch();
+    motorHeaderLayout->addWidget(motorValueLabel);  // 添加值显示标签
     motorHeaderLayout->addWidget(motorSwitch);
-    
+
     motorSpeedSlider = new QSlider(Qt::Horizontal);
     motorSpeedSlider->setRange(0, 100);
     motorSpeedSlider->setValue(30);
-    
+
     motorDirectionLayout = new QHBoxLayout();
     dirForwardBtn = new QPushButton("正向旋转");
     dirReverseBtn = new QPushButton("反向旋转");
@@ -136,8 +146,10 @@ void ControlPanelWidget::setupUI()
     // 连接信号槽
     connect(ledSwitch, &QCheckBox::toggled, this, &ControlPanelWidget::onLedSwitchToggled);
     connect(ledBrightnessSlider, &QSlider::valueChanged, this, &ControlPanelWidget::onLedBrightnessChanged);
+    connect(ledBrightnessSlider, &QSlider::valueChanged, this, &ControlPanelWidget::updateLedValueLabel);
     connect(motorSwitch, &QCheckBox::toggled, this, &ControlPanelWidget::onMotorSwitchToggled);
     connect(motorSpeedSlider, &QSlider::valueChanged, this, &ControlPanelWidget::onMotorSpeedChanged);
+    connect(motorSpeedSlider, &QSlider::valueChanged, this, &ControlPanelWidget::updateMotorValueLabel);
     connect(directionGroup, QOverload<int>::of(&QButtonGroup::buttonClicked), this, &ControlPanelWidget::onMotorDirectionChanged);
     connect(buzzerSwitch, &QCheckBox::toggled, this, &ControlPanelWidget::onBuzzerSwitchToggled);
 }
@@ -243,4 +255,18 @@ void ControlPanelWidget::onMotorDirectionChanged()
 void ControlPanelWidget::onBuzzerSwitchToggled(bool checked)
 {
     emit buzzerControlChanged(checked);
+}
+
+void ControlPanelWidget::updateLedValueLabel(int value)
+{
+    if (ledValueLabel) {
+        ledValueLabel->setText(QString::number(value) + "%");
+    }
+}
+
+void ControlPanelWidget::updateMotorValueLabel(int value)
+{
+    if (motorValueLabel) {
+        motorValueLabel->setText(QString::number(value) + "%");
+    }
 }

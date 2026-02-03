@@ -47,6 +47,8 @@ private slots:
     void onMotorSpeedChanged(int value);
     void onMotorDirectionChanged();
     void onBuzzerSwitchToggled(bool checked);
+    void updateLedValueLabel(int value);
+    void updateMotorValueLabel(int value);
 
 private:
     void setupUI();
@@ -61,6 +63,7 @@ private:
     QLabel *ledNameLabel;
     QCheckBox *ledSwitch;
     QSlider *ledBrightnessSlider;
+    QLabel *ledValueLabel;  // 显示LED亮度值的标签
 
     // Motor control
     QFrame *motorControlItem;
@@ -69,6 +72,7 @@ private:
     QLabel *motorNameLabel;
     QCheckBox *motorSwitch;
     QSlider *motorSpeedSlider;
+    QLabel *motorValueLabel;  // 显示电机速度值的标签
     QHBoxLayout *motorDirectionLayout;
     QPushButton *dirForwardBtn;
     QPushButton *dirReverseBtn;

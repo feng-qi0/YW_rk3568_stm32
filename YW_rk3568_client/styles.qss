@@ -125,18 +125,45 @@ QFrame#controlItem {
 /* Slider styles */
 QSlider::groove:horizontal {
     border: 1px solid #999999;
-    height: 8px;
+    height: 10px; /* 增加高度 */
     background: #d3d3d3;
-    margin: 4px 0;
-    border-radius: 4px;
+    margin: 2px 0; /* 调整边距 */
+    border-radius: 5px;
 }
 
 QSlider::handle:horizontal {
-    background: #5c67f2;
+    background: #ffffff; /* 白色滑块把手 */
+    border: 2px solid #5c67f2; /* 边框使用主题色 */
+    width: 20px; /* 增加宽度 */
+    height: 20px; /* 增加高度 */
+    margin: -6px 0; /* 调整垂直居中 */
+    border-radius: 10px; /* 圆形把手 */
+}
+
+/* 滑块把手悬停时的样式 */
+QSlider::handle:horizontal:hover {
+    background: #f0f0f0;
+    border: 2px solid #4f46e5;
+}
+
+/* 滑块把手按下时的样式 */
+QSlider::handle:horizontal:pressed {
+    background: #e0e0e0;
+    border: 2px solid #4f46e5;
+}
+
+/* 滑块已填充部分（把手前面的部分） */
+QSlider::sub-page:horizontal {
+    background: #5c67f2; /* 已填充部分使用主题色 */
     border: 1px solid #5c67f2;
-    width: 18px;
-    margin: -2px 0;
-    border-radius: 9px;
+    border-radius: 4px;
+}
+
+/* 滑块未填充部分（把手后面的部分） */
+QSlider::add-page:horizontal {
+    background: #d3d3d3; /* 未填充部分保持灰色 */
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
 }
 
 /* Sensor card styles */
