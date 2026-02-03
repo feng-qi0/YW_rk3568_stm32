@@ -192,14 +192,14 @@ void RK3568ControlPanel::setupUI()
 
     // LED 控制项
     ledControlItem = new QFrame(); // 使用 QFrame 以便设置样式
-    ledControlItem->setStyleSheet("background: #f8fafc; padding: 15px; border-radius: 12px; "
+    ledControlItem->setStyleSheet("background: #f8fafc; padding: 18px; border-radius: 12px; "
                                   "margin-bottom: 12px; border: 1px solid #edf2f7;");
-    ledControlItem->setMinimumHeight(120); // 增加最小高度以确保文本可见
+    ledControlItem->setMinimumHeight(120); // 增加高度确保文本可见
     ledControlItem->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred); // 允许扩展
     ledControlLayout = new QVBoxLayout(ledControlItem);
     ledHeaderLayout = new QHBoxLayout();
     ledNameLabel = new QLabel(tr("LED 照明灯"));
-    ledNameLabel->setStyleSheet("font-weight: 600; font-size: 14px;"); // 增大字体确保可见
+    ledNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;"); // 增大字体并设置最小高度
     ledSwitch = new QCheckBox();
     ledHeaderLayout->addWidget(ledNameLabel);
     ledHeaderLayout->addStretch(); // 将开关推到右侧
@@ -212,7 +212,7 @@ void RK3568ControlPanel::setupUI()
                                        "    border: 1px solid #999999;"
                                        "    height: 8px;"
                                        "    background: #d3d3d3;"
-                                       "    margin: 2px 0;"
+                                       "    margin: 4px 0;" // 增加边距
                                        "}"
                                        "QSlider::handle:horizontal {"
                                        "    background: #5c67f2;"
@@ -223,19 +223,19 @@ void RK3568ControlPanel::setupUI()
                                        "}");
     ledControlLayout->addLayout(ledHeaderLayout);
     ledControlLayout->addWidget(ledBrightnessSlider);
-    ledControlLayout->setContentsMargins(5, 5, 5, 5); // 设置适当的内边距
-    ledControlLayout->setSpacing(8); // 设置间距
+    ledControlLayout->setContentsMargins(8, 8, 8, 8); // 增加内边距
+    ledControlLayout->setSpacing(10); // 增加间距
 
     // 电机控制项
     motorControlItem = new QFrame();
-    motorControlItem->setStyleSheet("background: #f8fafc; padding: 20px; border-radius: 12px; " // 进一步增加内边距
+    motorControlItem->setStyleSheet("background: #f8fafc; padding: 18px; border-radius: 12px; " // 增加内边距
                                     "margin-bottom: 12px; border: 1px solid #edf2f7;");
-    motorControlItem->setMinimumHeight(200); // 进一步增加最小高度以容纳所有内容
+    motorControlItem->setMinimumHeight(180); // 增加高度确保文本可见
     motorControlItem->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred); // 允许扩展
     motorControlLayout = new QVBoxLayout(motorControlItem);
     motorHeaderLayout = new QHBoxLayout();
     motorNameLabel = new QLabel(tr("直流电机控制"));
-    motorNameLabel->setStyleSheet("font-weight: 600; font-size: 15px;"); // 进一步增大字体确保可见
+    motorNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;"); // 增大字体并设置最小高度
     motorSwitch = new QCheckBox();
     motorHeaderLayout->addWidget(motorNameLabel);
     motorHeaderLayout->addStretch();
@@ -248,7 +248,7 @@ void RK3568ControlPanel::setupUI()
                                     "    border: 1px solid #999999;"
                                     "    height: 8px;"
                                     "    background: #d3d3d3;"
-                                    "    margin: 5px 0;" // 增加边距
+                                    "    margin: 4px 0;" // 增加边距
                                     "}"
                                     "QSlider::handle:horizontal {"
                                     "    background: #5c67f2;"
@@ -266,17 +266,17 @@ void RK3568ControlPanel::setupUI()
 
     // 设置方向按钮样式，匹配HTML设计
     QString activeStyle = "QPushButton:checked { background: #fff; color: #5c67f2; "
-                          "border: 2px solid #5c67f2; font-weight: bold; font-size: 15px; " // 进一步增大字体
-                          "min-height: 45px; }"; // 设置最小高度确保文本完全显示
+                          "border: 2px solid #5c67f2; font-weight: bold; font-size: 15px; " // 增大字体
+                          "min-height: 45px; }"; // 增加最小高度
     QString inactiveStyle = "QPushButton { background: #e2e8f0; color: #64748b; "
                             "padding: 10px; border-radius: 6px; border: 2px solid transparent; " // 增加内边距
-                            "font-size: 15px; min-height: 45px; }"; // 进一步增大字体并设置最小高度
+                            "font-size: 15px; min-height: 45px; }"; // 增大字体和最小高度
     dirForwardBtn->setStyleSheet(inactiveStyle + activeStyle);
     dirReverseBtn->setStyleSheet(inactiveStyle + activeStyle);
 
     // 为方向按钮设置最小尺寸
-    dirForwardBtn->setMinimumSize(110, 45); // 进一步增大按钮尺寸
-    dirReverseBtn->setMinimumSize(110, 45); // 进一步增大按钮尺寸
+    dirForwardBtn->setMinimumSize(110, 45); // 增加按钮尺寸
+    dirReverseBtn->setMinimumSize(110, 45); // 增加按钮尺寸
 
     motorDirectionLayout->addWidget(dirForwardBtn);
     motorDirectionLayout->addWidget(dirReverseBtn);
@@ -284,24 +284,24 @@ void RK3568ControlPanel::setupUI()
     motorControlLayout->addLayout(motorHeaderLayout);
     motorControlLayout->addWidget(motorSpeedSlider);
     motorControlLayout->addLayout(motorDirectionLayout);
-    motorControlLayout->setContentsMargins(10, 10, 10, 10); // 进一步增加内边距
-    motorControlLayout->setSpacing(12); // 进一步增加间距
+    motorControlLayout->setContentsMargins(8, 8, 8, 8); // 增加内边距
+    motorControlLayout->setSpacing(10); // 增加间距
 
     // 蜂鸣器控制项
     buzzerControlItem = new QFrame();
     // 添加左侧警告色边框效果 - 与HTML设计一致
-    buzzerControlItem->setStyleSheet("background: #fff9db; padding: 20px; border-radius: 12px; " // 进一步增加内边距
+    buzzerControlItem->setStyleSheet("background: #fff9db; padding: 18px; border-radius: 12px; " // 增加内边距
                                      "margin-bottom: 0px; border-left: 4px solid #f59e0b;"); // 黄色警告边框
-    buzzerControlItem->setMinimumHeight(100); // 进一步增加最小高度以确保文本可见
+    buzzerControlItem->setMinimumHeight(80); // 增加高度确保文本可见
     buzzerControlItem->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred); // 允许扩展
     buzzerControlLayout = new QHBoxLayout(buzzerControlItem); // 水平布局用于名称和开关
     buzzerNameLabel = new QLabel(tr("紧急蜂鸣报警"));
-    buzzerNameLabel->setStyleSheet("font-weight: 600; font-size: 16px; min-height: 25px;"); // 进一步增大字体确保可见并设置最小高度
+    buzzerNameLabel->setStyleSheet("font-weight: 600; font-size: 15px; min-height: 20px;"); // 增大字体并设置最小高度
     buzzerSwitch = new QCheckBox();
     buzzerControlLayout->addWidget(buzzerNameLabel);
     buzzerControlLayout->addStretch(); // 将开关推到右侧
     buzzerControlLayout->addWidget(buzzerSwitch);
-    buzzerControlLayout->setContentsMargins(15, 15, 15, 15); // 进一步增加内边距
+    buzzerControlLayout->setContentsMargins(5, 5, 5, 5); // 适度的内边距，避免双重边框效果
 
     controlPanelLayout->addWidget(controlPanelTitle);
     controlPanelLayout->addWidget(ledControlItem);
