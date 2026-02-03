@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    widget.cpp
+    widget.cpp \
+    rk3568controlpanel.cpp
 
 HEADERS += \
-    widget.h
+    widget.h \
+    rk3568controlpanel.h
 
 FORMS += \
     widget.ui
