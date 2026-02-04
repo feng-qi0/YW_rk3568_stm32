@@ -445,6 +445,36 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\Infrared.h</FilePath>
             </File>
+            <File>
+              <FileName>Light.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Light.c</FilePath>
+            </File>
+            <File>
+              <FileName>Light.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Light.h</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_motor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\PWM_motor.c</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\PWM_motor.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\LED.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

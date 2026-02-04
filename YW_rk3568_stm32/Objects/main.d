@@ -31,6 +31,6 @@
 .\objects\main.o: D:\E_Ascll\keil\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\main.o: D:\E_Ascll\keil\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\main.o: D:\E_Ascll\keil\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h
-.\objects\main.o: .\Hardware\Infrared.h
 .\objects\main.o: .\Hardware\OLED.h
 .\objects\main.o: .\Hardware\Delay.h
+.\objects\main.o: .\Hardware\LED.h
