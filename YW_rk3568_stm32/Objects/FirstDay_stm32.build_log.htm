@@ -27,13 +27,11 @@ Project File Date:  02/04/2026
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\E_Ascll\keil\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling LED.c...
-Hardware\LED.c(47): warning:  #1-D: last line of file ends without a newline
-  }
-Hardware\LED.c: 1 warning, 0 errors
+compiling Main.c...
+compiling Buzzer.c...
 linking...
-Program Size: Code=1480 RO-data=268 RW-data=20 ZI-data=1028  
-".\Objects\FirstDay_stm32.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=456 RO-data=252 RW-data=0 ZI-data=1024  
+".\Objects\FirstDay_stm32.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -94,16 +92,16 @@ Package Vendor: Keil
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_tim.c
 
    * Component: Keil::Device:StdPeriph Drivers:SPI:3.5.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_spi.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_spi.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_spi.c
 
    * Component: Keil::Device:StdPeriph Drivers:SDIO:3.5.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_sdio.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_sdio.h
 
    * Component: Keil::Device:StdPeriph Drivers:RTC:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rtc.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_rtc.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rtc.h
 
    * Component: Keil::Device:StdPeriph Drivers:RCC:3.5.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
@@ -118,8 +116,8 @@ Package Vendor: Keil
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_iwdg.c
 
    * Component: Keil::Device:StdPeriph Drivers:I2C:3.5.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_i2c.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_i2c.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_i2c.c
 
    * Component: Keil::Device:StdPeriph Drivers:GPIO:3.5.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
@@ -128,9 +126,9 @@ Package Vendor: Keil
    * Component: Keil::Device:StdPeriph Drivers:Framework:3.5.1
       Include file:  Device\StdPeriph_Driver\inc\misc.h
       Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
-      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
       Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
       Source file:   Device\StdPeriph_Driver\src\misc.c
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
 
    * Component: Keil::Device:StdPeriph Drivers:Flash:3.5.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_flash.h
@@ -141,46 +139,46 @@ Package Vendor: Keil
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_fsmc.c
 
    * Component: Keil::Device:StdPeriph Drivers:EXTI:3.5.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_exti.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_exti.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_exti.c
 
    * Component: Keil::Device:StdPeriph Drivers:DMA:3.5.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_dma.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_dma.c
 
    * Component: Keil::Device:StdPeriph Drivers:DBGMCU:3.5.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_dbgmcu.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_dbgmcu.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_dbgmcu.c
 
    * Component: Keil::Device:StdPeriph Drivers:DAC:3.5.0
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_dac.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_dac.c
 
    * Component: Keil::Device:StdPeriph Drivers:CRC:3.5.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_crc.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_crc.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_crc.c
 
    * Component: Keil::Device:StdPeriph Drivers:CEC:3.5.0
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_cec.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_cec.h
 
    * Component: Keil::Device:StdPeriph Drivers:CAN:3.5.0
-      Source file:   Device\StdPeriph_Driver\src\stm32f10x_can.c
       Include file:  Device\StdPeriph_Driver\inc\stm32f10x_can.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_can.c
 
    * Component: Keil::Device:StdPeriph Drivers:BKP:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_bkp.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_bkp.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_bkp.h
 
    * Component: Keil::Device:StdPeriph Drivers:ADC:3.5.0
-      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_adc.h
       Source file:   Device\StdPeriph_Driver\src\stm32f10x_adc.c
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_adc.h
 
    * Component: Keil::Device:Startup:1.0.0
       Source file:   Device\Source\ARM\STM32F1xx_OPT.s
       Source file:   Device\Source\ARM\startup_stm32f10x_md.s
-      Source file:   Device\Source\system_stm32f10x.c
       Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\system_stm32f10x.c
 
    * Component: ARM::CMSIS:CORE:5.0.1
 Build Time Elapsed:  00:00:01

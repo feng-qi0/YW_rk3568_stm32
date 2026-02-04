@@ -87,4 +87,154 @@ int main(void)
 }
 ```
 
-3.光照强度
+### 3.光照强度：
+
+引脚：PA6->OA
+
+测量光照强度的ADC（待修正）：
+
+```C
+#include "stm32f10x.h"                  // Device header
+#include "Infrared.h"
+#include "OLED.h"
+#include "Delay.h"
+#include "Light.h"
+
+int main(void)
+{
+	//初始化屏幕
+	OLED_Init();
+	
+	//初始化光敏
+	Light_Init();
+
+	//单片机循环
+    while(1)
+	{
+		//获取光敏值
+		uint8_t light = Light_ADC();
+		//显示光敏值
+		OLED_ShowNum(1, 1, light, 3);
+	}
+}
+```
+
+
+
+### 4.电机控制
+
+引脚：PA0->PWMA
+
+​			B0->AIN1
+
+​			B1->AIN2
+
+电机控制测试：
+
+```c
+#include "stm32f10x.h"    
+#include "OLED.h"
+#include "Delay.h"
+#include "PWM_motor.h"
+
+int main(void)
+{
+	//初始化电机
+	PWMMotor_Init();
+	
+	while(1)
+	{
+		//设置速度
+		PWMMotor_SetSpeed(3000);
+		//延时
+		delayByMs(2000);
+		//设置速度
+		PWMMotor_SetSpeed(5000);
+		//延时
+		delayByMs(2000);
+		//正转
+		PWMMotor_Forward();
+		//延时
+		delayByMs(2000);
+		//反转
+		PWMMotor_Reverse();
+		//延时
+		delayByMs(2000);
+		//停止
+		PWMMotor_Stop();
+		//延时
+		delayByMs(2000);
+	}
+}
+```
+
+### 5.LED照明灯亮度控制
+
+引脚：PA7
+
+LED测试：
+
+```c
+#include "stm32f10x.h"    
+#include "OLED.h"
+#include "Delay.h"
+#include "LED.h"
+
+int main(void)
+{
+	//OLED初始化
+	OLED_Init();
+
+	//LED初始化
+	LED_Init();
+	
+	//控制LED亮度
+	LED_SetBright(9000);
+	//延时
+	delayByMs(3000);
+	while(1)
+	{
+		//控制LED亮度
+		LED_SetBright(0);
+		//延时
+		delayByMs(3000);
+		//控制LED亮度
+		LED_SetBright(2000);
+		//延时
+		delayByMs(3000);
+	}
+}
+```
+
+### 6.蜂鸣器控制：
+
+蜂鸣器测试代码
+
+```c
+#include "stm32f10x.h"    
+#include "OLED.h"
+#include "Delay.h"
+#include "Buzzer.h"
+
+int main(void)
+{
+	//初始化蜂鸣器
+	Buzzer_Init();
+	
+	while(1)
+	{
+		//响铃
+		Buzzer_Beep();
+		delayByMs(3000);
+		//停止响铃
+		Buzzer_Close();
+		delayByMs(30000);
+	}
+
+}
+```
+
+
+
+
+
