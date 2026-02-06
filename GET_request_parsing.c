@@ -77,6 +77,36 @@ void handle_request(int client_fd, char *path)
         //匹配成功,响应客户端
         path_api_status(client_fd);
     }
+    //匹配路径/api/camera/snapshot
+    else if(strcmp(path, "/api/camera/snapshot") == 0)
+    {
+        //匹配成功，响应客户端
+        path_api_camera_snapshot(client_fd);
+    }
+    //匹配路径/api/camera/stop_record
+    else if(strcmp(path, "/api/camera/stop_record") == 0)
+    {
+        //匹配成功，响应客户端
+        path_api_camera_stop_record(client_fd);
+    }
+    //匹配路径/api/camera/start_record
+    else if(strcmp(path, "/api/camera/start_record") == 0)
+    {
+        //匹配成功，响应客户端
+        path_api_camera_start_record(client_fd);
+    }
+    //匹配路径/api/camera/stop_stream
+    else if(strcmp(path, "/api/camera/stop_stream") == 0)
+    {
+        //匹配成功，响应客户端
+        path_api_camera_stop_stream(client_fd);
+    }
+    //匹配路径/api/camera/start_stream
+    else if(strcmp(path, "/api/camera/start_stream") == 0)
+    {
+        //匹配成功，响应客户端
+        path_api_camera_start_stream(client_fd);
+    }
     //匹配路径/index.html 或者 路径为空 或者 路径为/
     else if(strcmp(path, "") == 0 || strcmp(path,"/") == 0 || strcmp(path,"/index.html") == 0)
     {

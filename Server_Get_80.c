@@ -26,7 +26,7 @@ int main() {
     }
 
     //监听
-    if (listen(server_fd, 5) < 0) {
+    if (listen(server_fd, 10) < 0) {
         perror("listen");
         exit(EXIT_FAILURE);
     }

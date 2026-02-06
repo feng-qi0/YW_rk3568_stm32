@@ -1,39 +1,7 @@
 #include "GET_response.h"
 #include <sys/sendfile.h>
 
-//=============================
-//响应客户端
-/*
-    路径
-    /api/status
-*/
-void path_api_status(int client_fd)
-{
-    //响应逻辑
-    //测试案例:
-    char response[512];
-    //构建响应体
-    const char *json_response = "{\"temp\":25.6,\"humi\":60.3,\"light\":300,\"ir\":1500,\"led_on\":1,\"led_br\":75,\"motor_on\":0,\"motor_sp\":0,\"motor_dir\":0,\"buzzer\":0}";
-    int body_length = strlen(json_response);
-
-    //构建响应头
-    snprintf(response, sizeof(response),
-            "HTTP/1.1 200 OK\r\n"
-            "Content-Type: application/json\r\n"
-            "Content-Length: %d\r\n"
-            "Connection: close\r\n"
-            "\r\n",
-            body_length);
-
-    //将响应体添加到响应头中
-    strcat(response, json_response);
-
-    if(write(client_fd, response, strlen(response)) < 0)
-    {
-        perror("write failed");
-    }
-}
-
+//====================外部函数定义====================
 // 404响应
 void path_404(int client_fd)
 {
@@ -160,4 +128,93 @@ void path_index(int client_fd)
     free(file_content);
     free(response);
 }
+
+//API响应
+/*
+    路径
+    /api/status
+*/
+//返回传感器状态信息
+void path_api_status(int client_fd)
+{
+    //响应逻辑
+    //测试案例:
+    char response[512];
+    //构建响应体
+    const char *json_response = "{\"temp\":25.6,\"humi\":60.3,\"light\":300,\"ir\":1500,\"led_on\":1,\"led_br\":75,\"motor_on\":0,\"motor_sp\":0,\"motor_dir\":0,\"buzzer\":0}";
+    int body_length = strlen(json_response);
+
+    //构建响应头
+    snprintf(response, sizeof(response),
+            "HTTP/1.1 200 OK\r\n"
+            "Content-Type: application/json\r\n"
+            "Content-Length: %d\r\n"
+            "Connection: close\r\n"
+            "\r\n",
+            body_length);
+
+    //将响应体添加到响应头中
+    strcat(response, json_response);
+
+    if(write(client_fd, response, strlen(response)) < 0)
+    {
+        perror("write failed");
+    }
+}
+
+//API响应
+/*
+    路径
+    /api/camera/snapshot
+*/
+//摄像头拍照
+void path_api_camera_snapshot(int client_fd)
+{
+    //响应逻辑
+}
+
+//API响应
+/*
+    路径
+    /api/camera/stop_record
+*/
+//停止录像
+void path_api_camera_stop_record(int client_fd)
+{
+    //响应逻辑
+}
+
+//API响应
+/*
+    路径
+    /api/camera/start_record
+*/
+//开始录像
+void path_api_camera_start_record(int client_fd)
+{
+    //响应逻辑
+}
+
+//API响应
+/*
+    路径
+    /api/camera/stop_stream
+*/
+//停止视频流
+void path_api_camera_stop_stream(int client_fd)
+{
+    //响应逻辑
+}
+
+//API响应
+/*
+    路径
+    /api/camera/start_stream
+*/
+//开始视频流
+void path_api_camera_start_stream(int client_fd)
+{
+    //响应逻辑
+}
+//=====================内部函数定义====================
 
