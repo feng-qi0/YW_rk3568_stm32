@@ -13,7 +13,7 @@ void* parse_get(void *arg) {
     ssize_t bytes_read = read(client_fd, buffer, BUFFER_SIZE);
     if (bytes_read < 0) {
         perror("read failed");
-        return;
+        return NULL;
     }
 
     //解析请求
@@ -21,7 +21,7 @@ void* parse_get(void *arg) {
     if(strncmp(buffer, "GET ", 4) != 0){
         //不是GET请求
         printf("Not a GET request\n");
-        return;
+        return NULL;
     }
 
      printf("GET request for path: %s\n", buffer);
@@ -47,7 +47,7 @@ void* parse_get(void *arg) {
     if(path_end == NULL){
         //请求路径不正确
         printf("Invalid request path\n");
-        return;
+        return NULL;
     }
 
     //获取请求路径的长度
@@ -63,6 +63,8 @@ void* parse_get(void *arg) {
     handle_request(client_fd, path);
 
     close(client_fd);
+
+    return NULL;
 }
 
 
