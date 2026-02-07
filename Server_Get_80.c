@@ -1,7 +1,11 @@
 #include "GET_request_parsing.h"
 #define PORT 80
 
-int main() {
+int main() 
+{
+    //初始化MQTT
+    mqtt_init();
+
     //创建套接字
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd <= 0) {

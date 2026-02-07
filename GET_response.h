@@ -1,15 +1,6 @@
 #ifndef GET_RESPONSE_H
 #define GET_RESPONSE_H
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <pthread.h>
-#include <ctype.h>
-#include <errno.h>
+#include "MQTT_process.h"
 
 //=====================外部函数声明=====================
 //404错误响应
